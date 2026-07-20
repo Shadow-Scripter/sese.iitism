@@ -1,0 +1,230 @@
+.heroContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #b5dff0 0%, #e0effa 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Clouds */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  --scale: 1;
+  animation: float linear infinite;
+  opacity: 0.9;
+}
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.cloud1 { width: 120px; height: 35px; top: 15%; left: -200px; animation-duration: 40s; animation-delay: -15s; }
+.cloud1::before { width: 60px; height: 60px; top: -25px; left: 15px; }
+.cloud1::after { width: 45px; height: 45px; top: -15px; right: 15px; }
+
+.cloud2 { width: 180px; height: 50px; top: 25%; left: -300px; animation-duration: 55s; animation-delay: -35s; opacity: 0.7; --scale: 0.8; }
+.cloud2::before { width: 80px; height: 80px; top: -40px; left: 25px; }
+.cloud2::after { width: 60px; height: 60px; top: -25px; right: 25px; }
+
+.cloud3 { width: 90px; height: 25px; top: 35%; left: -150px; animation-duration: 30s; animation-delay: -10s; opacity: 0.6; }
+.cloud3::before { width: 40px; height: 40px; top: -15px; left: 10px; }
+.cloud3::after { width: 30px; height: 30px; top: -10px; right: 10px; }
+
+.cloud4 { width: 150px; height: 40px; top: 10%; left: -250px; animation-duration: 45s; animation-delay: -25s; opacity: 0.8; --scale: 0.9; }
+.cloud4::before { width: 70px; height: 70px; top: -35px; left: 20px; }
+.cloud4::after { width: 50px; height: 50px; top: -20px; right: 20px; }
+
+.cloud5 { width: 100px; height: 30px; top: 40%; left: -120px; animation-duration: 35s; animation-delay: -5s; opacity: 0.5; }
+.cloud5::before { width: 50px; height: 50px; top: -20px; left: 15px; }
+.cloud5::after { width: 40px; height: 40px; top: -15px; right: 15px; }
+
+/* Birds */
+.bird {
+  position: absolute;
+  fill: none;
+  stroke: rgba(27, 69, 40, 0.6);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  --scale: 1;
+  animation: fly linear infinite;
+  z-index: 5;
+  left: -100px;
+}
+.bird1 { top: 20%; animation-duration: 25s; animation-delay: -12s; width: 40px; height: 20px; }
+.bird2 { top: 28%; animation-duration: 30s; animation-delay: -5s; width: 30px; height: 15px; --scale: 0.8; }
+.bird3 { top: 15%; animation-duration: 22s; animation-delay: -18s; width: 50px; height: 25px; }
+
+/* Scenery */
+.hillGroup {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: 1;
+}
+
+.hillBase {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
+  background: var(--grass-light);
+  z-index: 0;
+}
+
+.hillBack {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  width: 80vw;
+  height: 45vh;
+  background: var(--grass-dark);
+  border-radius: 100% 100% 0 0;
+  z-index: 1;
+}
+
+.hillFront {
+  position: absolute;
+  bottom: 0;
+  right: -20%;
+  width: 90vw;
+  height: 35vh;
+  background: var(--grass-light);
+  border-radius: 100% 100% 0 0;
+  z-index: 2;
+}
+
+.waterBodyWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30vh;
+  z-index: 3;
+  overflow: hidden; 
+}
+
+.waterBodySvg {
+  position: absolute;
+  bottom: -2px; 
+  left: -2%;
+  width: 104%; 
+  height: 110%;
+}
+
+.marqueeTextPath {
+  font-size: 1.5rem;
+  font-weight: 600;
+  fill: white;
+  letter-spacing: 1px;
+}
+
+.trees {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; 
+  pointer-events: none;
+}
+
+.forestTree {
+  position: absolute;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
+}
+
+.backLayer {
+  z-index: 1;
+  opacity: 0.6;
+  filter: blur(1px) drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+  animation: sway 8s ease-in-out infinite alternate;
+}
+
+.midLayer {
+  z-index: 2;
+  opacity: 0.85;
+  filter: blur(0.5px) drop-shadow(0 10px 10px rgba(0,0,0,0.15));
+  animation: sway 6s ease-in-out infinite alternate;
+}
+
+.frontLayer {
+  z-index: 3;
+  opacity: 1;
+  animation: sway 5s ease-in-out infinite alternate;
+}
+
+/* Stagger animations for forest */
+.backLayer:nth-child(even), .midLayer:nth-child(even), .frontLayer:nth-child(even) {
+  animation-direction: alternate-reverse;
+  animation-delay: 1.5s;
+}
+
+/* Text Content Container */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  animation: fadeUp 1s ease-out forwards;
+  margin-top: -15vh;
+}
+
+.mainLogo {
+  width: 150px;
+  height: auto;
+  margin-bottom: -10px;
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--forest-dark);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--forest-dark);
+  max-width: 650px;
+}
+
+.seeMoreBtn {
+  margin-top: 20px;
+}
+
+/* Keyframes */
+@keyframes float {
+  0% { transform: translateX(0) scale(var(--scale)); }
+  100% { transform: translateX(120vw) scale(var(--scale)); }
+}
+
+@keyframes fly {
+  0% { transform: translateX(0) translateY(0) scale(var(--scale)); }
+  50% { transform: translateX(60vw) translateY(-20px) scale(var(--scale)); }
+  100% { transform: translateX(120vw) translateY(10px) scale(var(--scale)); }
+}
+
+@keyframes sway {
+  0% { transform: rotate(-3deg); }
+  100% { transform: rotate(3deg); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

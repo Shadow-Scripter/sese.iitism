@@ -1,0 +1,114 @@
+.aboutSection {
+  padding: 100px 5%;
+  background-color: var(--cloud-white);
+  overflow: hidden;
+  text-align: center;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.imageContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 60px;
+  cursor: pointer;
+}
+
+.blurBackground {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--leaf-green);
+  filter: blur(40px);
+  opacity: 0.2;
+  transition: opacity 0.7s ease;
+  z-index: 0;
+}
+
+.imageContainer:hover .blurBackground {
+  opacity: 0.4;
+}
+
+.treeImg {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 60px 20px 60px 20px;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  z-index: 1;
+  transition: transform 0.7s ease;
+}
+
+.imageContainer:hover .treeImg {
+  transform: scale(1.02);
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--forest-dark);
+  margin-bottom: 50px;
+  letter-spacing: -1px;
+}
+
+.answersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: left;
+}
+
+.answerCard {
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  border: 1px solid rgba(55, 139, 77, 0.2);
+  font-size: 1.25rem;
+  color: #5c4033; /* earth-brown */
+  line-height: 1.6;
+  transition: transform 0.3s ease;
+}
+
+.shape1 {
+  border-radius: 20px 40px 20px 40px;
+}
+
+.shape2 {
+  border-radius: 40px 20px 40px 20px;
+}
+
+.answerCard:hover {
+  transform: scale(1.05) translateX(10px);
+}
+
+.shape2:hover {
+  transform: scale(1.05) translateX(-10px);
+}
+
+.answerTitle {
+  display: block;
+  color: var(--leaf-green);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Animations */
+.hiddenLeft, .slideInLeft, .hiddenRight, .slideInRight, .hiddenTop, .slideInTop {
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hiddenLeft { opacity: 0; transform: translateX(-100px); }
+.slideInLeft { opacity: 1; transform: translateX(0); }
+
+.hiddenRight { opacity: 0; transform: translateX(100px); }
+.slideInRight { opacity: 1; transform: translateX(0); }
+
+.hiddenTop { opacity: 0; transform: translateY(50px); }
+.slideInTop { opacity: 1; transform: translateY(0); }

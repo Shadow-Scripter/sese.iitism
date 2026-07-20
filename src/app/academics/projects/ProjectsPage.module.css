@@ -1,0 +1,450 @@
+.pageContainer {
+  min-height: 100vh;
+  background-image: url('/images/trees/forest.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for readability */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Global Search Component */
+.globalSearchWrapper {
+  position: fixed;
+  top: 25px; /* Aligned with navbar */
+  right: 30px; /* Positioned on the right side */
+  z-index: 1001; /* Above navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.searchToggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(20, 40, 20, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.searchToggle:hover {
+  background: rgba(40, 70, 40, 0.9);
+  transform: scale(1.05);
+}
+
+.searchDropdown {
+  margin-top: 10px;
+  background: rgba(20, 40, 20, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.searchInput:focus {
+  border-color: rgba(150, 200, 150, 1);
+}
+
+.searchResults {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.searchResultItem {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  font-size: 0.95rem;
+}
+
+.searchResultItem:last-child {
+  border-bottom: none;
+}
+
+.searchResultItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.searchCategoryBadge {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.noResults {
+  padding: 15px 10px;
+  text-align: center;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.mainContent {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.heroTitle {
+  font-size: 8vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.heroSubtitle {
+  font-size: 2.5vw;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0 0 50px 0;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+
+
+/* Branch Sections */
+.branchSection {
+  min-height: 80vh;
+  position: relative;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.branchWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+
+/* Image Branch Container */
+.imageBranchContainer {
+  position: absolute;
+  top: 50%;
+  width: 80%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.branchWrapper.left .imageBranchContainer {
+  left: -90px; /* Attach exactly to the true left edge (compensates for 70px sidebar + 20px overlap) */
+  transform: translateY(-50%);
+}
+
+.branchWrapper.right .imageBranchContainer {
+  right: -20px; /* Attach exactly to right edge */
+  transform: translateY(-50%) scaleX(-1); /* Flip it so base is on right */
+}
+
+.branchImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  z-index: 5;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+}
+
+.branchTextOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.branchWrapper.left .branchTextOverlay {
+  /* No flip needed here since container isn't flipped */
+}
+
+.branchWrapper.right .branchTextOverlay {
+  transform: scaleX(-1); /* Unflip the text */
+}
+
+.branchTitle {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 2px;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.floatingTitlesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floatingTitle {
+  position: absolute;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  animation: floatLeaf 6s ease-in-out infinite alternate;
+  background: rgba(101, 163, 13, 0.8);
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.floatingTitle:hover {
+  background: rgba(132, 204, 22, 1);
+  transform: scale(1.1) !important;
+  z-index: 50;
+}
+
+/* Specific positions mapped to the visual leaf clusters on the branch */
+/* Left Branch Positions */
+.branchWrapper.left .floatingTitle:nth-child(1) { top: 15%; left: 28%; }
+.branchWrapper.left .floatingTitle:nth-child(2) { top: 30%; left: 22%; }
+.branchWrapper.left .floatingTitle:nth-child(3) { top: 60%; left: 12%; }
+.branchWrapper.left .floatingTitle:nth-child(4) { top: 38%; left: 45%; }
+.branchWrapper.left .floatingTitle:nth-child(5) { top: 48%; left: 68%; }
+.branchWrapper.left .floatingTitle:nth-child(6) { top: 62%; left: 78%; }
+.branchWrapper.left .floatingTitle:nth-child(7) { top: 75%; left: 72%; }
+.branchWrapper.left .floatingTitle:nth-child(8) { top: 5%; left: 35%; }
+
+/* Right Branch Positions (Mirrored manually since overlay is unflipped) */
+.branchWrapper.right .floatingTitle:nth-child(1) { top: 15%; right: 28%; }
+.branchWrapper.right .floatingTitle:nth-child(2) { top: 30%; right: 22%; }
+.branchWrapper.right .floatingTitle:nth-child(3) { top: 60%; right: 12%; }
+.branchWrapper.right .floatingTitle:nth-child(4) { top: 38%; right: 45%; }
+.branchWrapper.right .floatingTitle:nth-child(5) { top: 48%; right: 68%; }
+.branchWrapper.right .floatingTitle:nth-child(6) { top: 62%; right: 78%; }
+.branchWrapper.right .floatingTitle:nth-child(7) { top: 75%; right: 72%; }
+.branchWrapper.right .floatingTitle:nth-child(8) { top: 5%; right: 35%; }
+
+@keyframes floatLeaf {
+  0% { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* Decorative Trees */
+.decoTree {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.7;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)) blur(1px);
+  pointer-events: none;
+}
+
+.tree1 { top: 15%; left: 5%; width: 200px; }
+.tree2 { top: 30%; right: 2%; width: 250px; }
+.tree3 { top: 50%; left: -2%; width: 180px; }
+.tree4 { top: 65%; right: 8%; width: 220px; }
+.tree5 { top: 80%; left: 10%; width: 300px; }
+.tree6 { top: 90%; right: 5%; width: 150px; }
+
+/* Professional Expanded Card */
+.professionalCard {
+  position: absolute;
+  top: 35%; /* Shifted slightly up from center */
+  width: 500px;
+  height: auto;
+  min-height: 350px;
+  background: linear-gradient(rgba(10, 25, 10, 0.75), rgba(10, 25, 10, 0.75)), url('/images/trees/forest.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  box-shadow: 0 25px 40px rgba(0,0,0,0.6);
+  color: white;
+}
+
+.leftCard {
+  right: 20%;
+  animation: slideLeftCard 0.4s ease-out forwards;
+}
+@keyframes slideLeftCard {
+  0% { transform: translate(-100px, -50%); opacity: 0; }
+  100% { transform: translate(0, -50%); opacity: 1; }
+}
+
+.rightCard {
+  left: 10%; /* Push it further away from the branch on the right */
+  animation: slideRightCard 0.4s ease-out forwards;
+}
+@keyframes slideRightCard {
+  0% { transform: translate(100px, -50%); opacity: 0; }
+  100% { transform: translate(0, -50%); opacity: 1; }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 15px;
+}
+
+.cardExpandedTitle {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0;
+  color: #a7f3d0;
+  letter-spacing: 1px;
+}
+
+.closeArrowBtn {
+  position: absolute;
+  top: -25px; /* 3/4 outside the top edge */
+  background: rgba(20, 40, 20, 0.9); /* Slightly darker so it pops outside the card */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.leftCard .closeArrowBtn {
+  left: -25px; /* On the left side of the card (pointing left) */
+}
+
+.rightCard .closeArrowBtn {
+  right: -25px; /* On the right side of the card (pointing right) */
+}
+
+.closeArrowBtn:hover {
+  background: rgba(40, 70, 40, 0.9);
+  transform: scale(1.1);
+}
+
+.cardBody {
+  flex: 1;
+}
+
+.cardDetails {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+}
+
+.downloadBtn {
+  background: #facc15; 
+  color: #14532d;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.downloadBtn:hover {
+  background: #fef08a;
+  transform: translateY(-2px);
+}
+
+.hiddenTitle {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0);
+}
