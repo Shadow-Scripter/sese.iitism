@@ -9,25 +9,35 @@ export default function AboutPage() {
   const [activeTeam, setActiveTeam] = useState('Tech Team');
   const [activeYear, setActiveYear] = useState('2025');
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 15;
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  const faqs = Array.from({ length: 10 }).map((_, i) => ({
+  const faqs = Array.from({ length: 7 }).map((_, i) => ({
     question: `Frequently Asked Question ${i + 1}?`,
     answer: `This is the detailed answer for question ${i + 1}. It provides all the necessary information requested by the user and expands gracefully using the new accordion animation.`
   }));
 
   const teams = ['Tech Team', 'PR Team', 'Design Team', 'Doc Team', 'Social Media Team'];
 
-  // Dummy 2x4 grid data (8 members) for the active team
-  const members = Array.from({ length: 8 }).map((_, i) => ({
+  // Dummy data (25 members) to demonstrate pagination
+  const members = Array.from({ length: 25 }).map((_, i) => ({
     name: `Member ${i + 1}`,
     dept: 'Environmental Engineering',
     // Dynamic based on year and team
     avatar: `https://ui-avatars.com/api/?name=${activeTeam.replace(' ', '+')}+Member+${i + 1}+${activeYear}&background=random`
   }));
+
+  const totalPages = Math.ceil(members.length / ITEMS_PER_PAGE);
+  const paginatedMembers = members.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+  // Reset page to 1 when changing filters
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTeam, activeYear]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -54,7 +64,7 @@ export default function AboutPage() {
     elements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [activeYear, activeTeam]);
+  }, [activeYear, activeTeam, currentPage]);
 
   return (
     <>
@@ -199,10 +209,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* 2x4 Grid Members (Dynamic to Team AND Year) */}
-            <div className={styles.grid} key={`grid-${activeTeam}-${activeYear}`}>
-              {members.map((member, idx) => (
-                <div key={idx} className={`${styles.memberItem} reveal ${styles.revealTop}`} style={{ transitionDelay: `${(idx % 4) * 0.1}s` }}>
+            {/* Responsive Grid Members with Pagination */}
+            <div className={styles.grid} key={`grid-${activeTeam}-${activeYear}-${currentPage}`}>
+              {paginatedMembers.map((member, idx) => (
+                <div key={idx} className={`${styles.memberItem} reveal ${styles.revealTop}`} style={{ transitionDelay: `${(idx % 5) * 0.1}s` }}>
                   <div className={styles.avatarWrapper}>
                     <img src={member.avatar} alt={member.name} className={styles.avatarImg} />
                   </div>
@@ -212,6 +222,36 @@ export default function AboutPage() {
               ))}
             </div>
             
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className={styles.paginationControls}>
+                <button 
+                  className={styles.pageButton} 
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                >
+                  Prev
+                </button>
+                
+                {Array.from({ length: totalPages }).map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`${styles.pageButton} ${currentPage === idx + 1 ? styles.active : ''}`}
+                    onClick={() => setCurrentPage(idx + 1)}
+                  >
+                    {idx + 1}
+                  </button>
+                ))}
+
+                <button 
+                  className={styles.pageButton} 
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            )}
             
           </div>
 

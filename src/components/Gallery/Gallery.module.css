@@ -1,5 +1,5 @@
 .gallerySection {
-  padding: 80px 5%;
+  padding: 108px 5%;
   background-color: var(--cloud-white);
   display: flex;
   flex-direction: column;
@@ -7,12 +7,12 @@
 }
 
 .heading {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
   font-weight: 800;
   color: var(--forest-dark);
-  margin-bottom: 40px;
+  margin-bottom: 54px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 2.7px;
 }
 
 .heading span {
@@ -21,12 +21,12 @@
 
 .sliderContainer {
   position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: 600px;
-  border-radius: 20px;
+  width: 80vw;
+  max-width: none;
+  height: 75vh;
+  border-radius: 27px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 20.25px 47.25px rgba(0,0,0,0.15);
   cursor: grab;
   user-select: none;
 }
@@ -62,26 +62,26 @@
   left: 0;
   right: 0;
   background: linear-gradient(to top, rgba(27, 69, 40, 0.9), transparent);
-  padding: 30px;
+  padding: 40.5px;
   color: white;
 }
 
 .cardTitle {
-  font-size: 1.8rem;
+  font-size: 3.5rem;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 6.75px;
 }
 
 /* Pagination Dots */
 .pagination {
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 13.5px;
+  margin-top: 27px;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 16.2px;
+  height: 16.2px;
   border-radius: 50%;
   background-color: rgba(55, 139, 77, 0.3);
   cursor: pointer;
@@ -99,10 +99,10 @@
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6.75px);
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -114,8 +114,8 @@
 
 .navBtn:hover {
   background: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 5.4px 13.5px rgba(0,0,0,0.1);
 }
 
-.prevBtn { left: 20px; }
-.nextBtn { right: 20px; }
+.prevBtn { left: 27px; }
+.nextBtn { right: 27px; }

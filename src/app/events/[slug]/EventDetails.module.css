@@ -22,7 +22,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(20px) brightness(0.7);
+  filter: blur(27px) brightness(0.7);
   transform: scale(1.1);
 }
 
@@ -39,7 +39,7 @@
 .mainContent {
   flex: 1;
   z-index: 10;
-  padding: 120px 5% 60px;
+  padding: 162px 5% 81px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,21 +47,21 @@
 
 .glassCard {
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 30px;
+  backdrop-filter: blur(20.25px);
+  -webkit-backdrop-filter: blur(20.25px);
+  border: 1.35px solid rgba(255, 255, 255, 0.4);
+  border-radius: 40.5px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1350px;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 33.75px 67.5px -16.2px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   animation: floatUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @keyframes floatUp {
-  0% { opacity: 0; transform: translateY(40px); }
+  0% { opacity: 0; transform: translateY(54px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
@@ -70,26 +70,26 @@
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 10.8px;
+  margin-bottom: 27px;
   color: white;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.49rem;
   transition: transform 0.3s ease;
   z-index: 10;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1350px;
 }
 
 .backLink:hover {
-  transform: translateX(-5px);
+  transform: translateX(-6.75px);
 }
 
 /* Card Header Image */
 .headerImageWrapper {
   width: 100%;
-  height: 350px;
+  height: 472.5px;
   position: relative;
 }
 
@@ -101,53 +101,53 @@
 
 .categoryBadge {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 27px;
+  left: 27px;
   background: var(--leaf-green);
   color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 10.8px 21.6px;
+  border-radius: 27px;
   font-weight: bold;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 1.22rem;
+  letter-spacing: 1.35px;
+  box-shadow: 0 5.4px 13.5px rgba(0,0,0,0.2);
 }
 
 /* Card Body */
 .cardBody {
-  padding: 40px;
+  padding: 54px;
   display: flex;
   flex-direction: column;
 }
 
 .title {
-  font-size: 2.8rem;
+  font-size: 3.78rem;
   color: var(--forest-dark);
-  margin: 0 0 30px 0;
+  margin: 0 0 40.5px 0;
   line-height: 1.2;
 }
 
 /* Badges Grid */
 .badgesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-  margin-bottom: 40px;
-  padding-bottom: 30px;
-  border-bottom: 2px dashed rgba(27, 69, 40, 0.2);
+  grid-template-columns: repeat(auto-fit, minmax(243px, 1fr));
+  gap: 20.25px;
+  margin-bottom: 54px;
+  padding-bottom: 40.5px;
+  border-bottom: 2.7px dashed rgba(27, 69, 40, 0.2);
 }
 
 .badge {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16.2px;
   background: rgba(143, 199, 111, 0.15);
-  padding: 15px;
-  border-radius: 12px;
+  padding: 20.25px;
+  border-radius: 16.2px;
 }
 
 .badgeIcon {
-  font-size: 1.5rem;
+  font-size: 2.03rem;
 }
 
 .badgeInfo {
@@ -156,24 +156,24 @@
 }
 
 .badgeLabel {
-  font-size: 0.8rem;
+  font-size: 1.08rem;
   color: #6b7280;
   text-transform: uppercase;
   font-weight: 600;
 }
 
 .badgeValue {
-  font-size: 1.05rem;
+  font-size: 1.42rem;
   color: var(--forest-dark);
   font-weight: 700;
 }
 
 /* Description */
 .description {
-  font-size: 1.15rem;
+  font-size: 1.55rem;
   line-height: 1.8;
   color: #4b5563;
-  margin-bottom: 40px;
+  margin-bottom: 54px;
 }
 
 /* Action Section */
@@ -182,34 +182,34 @@
   flex-direction: column;
   align-items: center;
   background: rgba(27, 69, 40, 0.05);
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid rgba(27, 69, 40, 0.1);
+  padding: 40.5px;
+  border-radius: 27px;
+  border: 1.35px solid rgba(27, 69, 40, 0.1);
 }
 
 .statusText {
   font-weight: 600;
   color: var(--forest-dark);
-  margin-bottom: 15px;
-  font-size: 1.1rem;
+  margin-bottom: 20.25px;
+  font-size: 1.49rem;
 }
 
 .buyBtn {
   background: linear-gradient(135deg, var(--leaf-green), var(--forest-dark));
   color: white;
   border: none;
-  padding: 15px 40px;
-  border-radius: 30px;
-  font-size: 1.2rem;
+  padding: 20.25px 54px;
+  border-radius: 40.5px;
+  font-size: 1.62rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(143, 199, 111, 0.4);
+  box-shadow: 0 13.5px 27px rgba(143, 199, 111, 0.4);
 }
 
 .buyBtn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 25px rgba(27, 69, 40, 0.5);
+  transform: translateY(-4.05px) scale(1.02);
+  box-shadow: 0 20.25px 33.75px rgba(27, 69, 40, 0.5);
 }
 
 .buyBtn:disabled {
@@ -222,49 +222,49 @@
 /* Materials Section */
 .materialsSection {
   width: 100%;
-  margin-top: 20px;
-  padding: 20px;
+  margin-top: 27px;
+  padding: 27px;
   background: white;
-  border-radius: 15px;
-  border-left: 5px solid var(--leaf-green);
+  border-radius: 20.25px;
+  border-left: 6.75px solid var(--leaf-green);
   animation: slideDown 0.5s ease;
 }
 
 @keyframes slideDown {
-  0% { opacity: 0; transform: translateY(-20px); }
+  0% { opacity: 0; transform: translateY(-27px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
 .materialsTitle {
   color: var(--forest-dark);
-  font-size: 1.2rem;
-  margin: 0 0 15px 0;
+  font-size: 1.62rem;
+  margin: 0 0 20.25px 0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 13.5px;
 }
 
 .materialLink {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 13.5px;
+  padding: 16.2px 27px;
   background: rgba(143, 199, 111, 0.1);
   color: var(--forest-dark);
   text-decoration: none;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 13.5px;
   transition: background 0.2s;
-  margin-bottom: 10px;
+  margin-bottom: 13.5px;
 }
 
 .materialLink:hover {
   background: rgba(143, 199, 111, 0.25);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1036.8px) {
   .title {
-    font-size: 2rem;
+    font-size: 2.7rem;
   }
   .badgesGrid {
     grid-template-columns: 1fr;

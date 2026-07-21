@@ -1,18 +1,19 @@
 .eventsSection {
-  padding: 80px 5%;
+  padding: 108px 5%;
   background-color: transparent; /* Assuming main background covers this */
   overflow: hidden; 
 }
 
 .container {
-  max-width: 1200px;
+  width: 75vw;
+  max-width: none;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 50px;
+  gap: 67.5px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1036.8px) {
   .container {
     grid-template-columns: 1fr 1fr;
   }
@@ -20,56 +21,56 @@
 
 .column {
   background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-  border: 2px solid rgba(55, 139, 77, 0.3);
+  backdrop-filter: blur(13.5px);
+  padding: 54px;
+  box-shadow: 0 27px 33.75px -6.75px rgba(0,0,0,0.1);
+  border: 2.7px solid rgba(55, 139, 77, 0.3);
   display: flex;
   flex-direction: column;
 }
 
 .recentCol {
-  border-radius: 40px 20px 40px 20px;
+  border-radius: 54px 27px 54px 27px;
 }
 
 .upcomingCol {
-  border-radius: 20px 40px 20px 40px;
+  border-radius: 27px 54px 27px 54px;
 }
 
 .heading {
-  font-size: 2.25rem;
+  font-size: 3.04rem;
   font-weight: 800;
   color: var(--forest-dark);
-  margin-bottom: 40px;
-  border-bottom: 4px solid var(--leaf-green);
+  margin-bottom: 54px;
+  border-bottom: 5.4px solid var(--leaf-green);
   display: inline-block;
   align-self: flex-start;
-  padding-bottom: 8px;
+  padding-bottom: 10.8px;
 }
 
 .cardList {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 33.75px;
 }
 
 /* Recent Card */
 .recentCard {
-  border-left: 8px solid var(--forest-dark);
+  border-left: 10.8px solid var(--forest-dark);
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 20px;
-  border-radius: 0 16px 16px 0;
+  padding: 27px;
+  border-radius: 0 21.6px 21.6px 0;
   transition: all 0.3s ease;
 }
 
 .recentCard:hover {
-  transform: scale(1.03) translateX(10px);
+  transform: scale(1.03) translateX(13.5px);
   background-color: rgba(255, 255, 255, 0.9);
 }
 
 .recentTitle {
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 2.2rem;
   color: var(--forest-dark);
   transition: color 0.3s ease;
 }
@@ -80,65 +81,66 @@
 
 .recentDesc {
   color: #5c4033; /* earth-brown */
-  margin-top: 8px;
+  margin-top: 10.8px;
   line-height: 1.5;
+  font-size: 1.6rem;
 }
 
 /* Upcoming Card */
 .upcomingCard {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
+  gap: 32.4px;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 24px;
-  border-radius: 20px 10px 20px 10px;
-  border: 1px solid rgba(55, 139, 77, 0.4);
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  padding: 32.4px;
+  border-radius: 27px 13.5px 27px 13.5px;
+  border: 1.35px solid rgba(55, 139, 77, 0.4);
+  box-shadow: 0 5.4px 8.1px -1.35px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 
 .upcomingCard:hover {
-  transform: scale(1.05) translateY(-5px);
+  transform: scale(1.05) translateY(-6.75px);
 }
 
 .dateBox {
   background-color: var(--forest-dark);
   color: #f1f8eb; /* nature-light */
-  padding: 16px;
-  border-radius: 15px 5px 15px 5px;
+  padding: 21.6px;
+  border-radius: 20.25px 6.75px 20.25px 6.75px;
   text-align: center;
-  min-width: 90px;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  min-width: 121.5px;
+  box-shadow: 0 13.5px 20.25px -4.05px rgba(0,0,0,0.1);
 }
 
 .month {
-  font-size: 0.875rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.35px;
   opacity: 0.9;
   font-weight: 700;
 }
 
 .day {
-  font-size: 1.875rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  margin-top: 4px;
+  margin-top: 5.4px;
 }
 
 .upcomingContent {
-  margin-top: 8px;
+  margin-top: 10.8px;
 }
 
 .upcomingTitle {
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 2.2rem;
   color: var(--forest-dark);
 }
 
 .upcomingDesc {
-  font-size: 1rem;
+  font-size: 1.6rem;
   color: #5c4033; /* earth-brown */
-  margin-top: 8px;
+  margin-top: 10.8px;
   line-height: 1.5;
 }
 
@@ -147,8 +149,8 @@
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.hiddenLeft { opacity: 0; transform: translateX(-100px); }
+.hiddenLeft { opacity: 0; transform: translateX(-135px); }
 .slideInLeft { opacity: 1; transform: translateX(0); }
 
-.hiddenRight { opacity: 0; transform: translateX(100px); }
+.hiddenRight { opacity: 0; transform: translateX(135px); }
 .slideInRight { opacity: 1; transform: translateX(0); }

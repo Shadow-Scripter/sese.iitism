@@ -56,20 +56,20 @@ export default function Hero() {
         {/* Animated Forest using extracted trees */}
         <div className={styles.trees}>
           {/* Deep Forest (Small trees in the back) */}
-          <img src="/images/trees/tree_1.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ left: '10%', bottom: '28vh', height: '150px' }} />
-          <img src="/images/trees/tree_2.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ left: '25%', bottom: '32vh', height: '120px' }} />
-          <img src="/images/trees/tree_3.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ right: '35%', bottom: '30vh', height: '140px' }} />
-          <img src="/images/trees/tree_4.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ right: '15%', bottom: '26vh', height: '170px' }} />
-          <img src="/images/trees/tree_5.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ right: '5%', bottom: '31vh', height: '130px' }} />
+          <img src="/images/trees/tree_1.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ left: '10%', bottom: '28vh', height: '340px' }} />
+          <img src="/images/trees/tree_2.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ left: '25%', bottom: '32vh', height: '270px' }} />
+          <img src="/images/trees/tree_3.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ right: '35%', bottom: '30vh', height: '315px' }} />
+          <img src="/images/trees/tree_4.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ right: '15%', bottom: '26vh', height: '385px' }} />
+          <img src="/images/trees/tree_5.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.backLayer}`} style={{ right: '5%', bottom: '31vh', height: '295px' }} />
           
           {/* Mid Forest (Medium trees) */}
-          <img src="/images/trees/tree_6.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.midLayer}`} style={{ left: '5%', bottom: '22vh', height: '220px' }} />
-          <img src="/images/trees/tree_7.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.midLayer}`} style={{ left: '35%', bottom: '25vh', height: '200px' }} />
-          <img src="/images/trees/tree_8.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.midLayer}`} style={{ right: '25%', bottom: '24vh', height: '190px' }} />
+          <img src="/images/trees/tree_6.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.midLayer}`} style={{ left: '5%', bottom: '22vh', height: '495px' }} />
+          <img src="/images/trees/tree_7.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.midLayer}`} style={{ left: '35%', bottom: '25vh', height: '450px' }} />
+          <img src="/images/trees/tree_8.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.midLayer}`} style={{ right: '25%', bottom: '24vh', height: '430px' }} />
           
           {/* Front Forest (Large trees) */}
-          <img src="/images/trees/tree_9.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.frontLayer}`} style={{ left: '18%', bottom: '18vh', height: '280px' }} />
-          <img src="/images/trees/tree_1.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.frontLayer}`} style={{ right: '8%', bottom: '15vh', height: '320px' }} />
+          <img src="/images/trees/tree_9.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.frontLayer}`} style={{ left: '18%', bottom: '18vh', height: '630px' }} />
+          <img src="/images/trees/tree_1.png" alt="Forest Tree" className={`${styles.forestTree} ${styles.frontLayer}`} style={{ right: '8%', bottom: '15vh', height: '720px' }} />
         </div>
       </div>
 
@@ -97,11 +97,10 @@ export default function Hero() {
       {/* Main Content */}
       <div className={styles.content}>
         <img src="/logo_nobg.png" alt="SESE Logo" className={styles.mainLogo} />
-        <h1 className={styles.title}>SESE</h1>
-        <h2 className={styles.subtitle}>Society of Environmental Science & Engineering</h2>
-        <button className={`btn-primary ${styles.seeMoreBtn}`} onClick={scrollToNext}>
-          SEE MORE
-        </button>
+        <h1 className={styles.title}>
+          SESE<br />
+          <span className={styles.subtitleSpan}>Society of Environmental Science<br />&<br />Engineering</span>
+        </h1>
       </div>
     </section>
   );

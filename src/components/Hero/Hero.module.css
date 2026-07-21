@@ -13,7 +13,7 @@
 .cloud {
   position: absolute;
   background: white;
-  border-radius: 50px;
+  border-radius: 67.5px;
   --scale: 1;
   animation: float linear infinite;
   opacity: 0.9;
@@ -25,25 +25,25 @@
   border-radius: 50%;
 }
 
-.cloud1 { width: 120px; height: 35px; top: 15%; left: -200px; animation-duration: 40s; animation-delay: -15s; }
-.cloud1::before { width: 60px; height: 60px; top: -25px; left: 15px; }
-.cloud1::after { width: 45px; height: 45px; top: -15px; right: 15px; }
+.cloud1 { width: 162px; height: 47.25px; top: 15%; left: -270px; animation-duration: 40s; animation-delay: -15s; }
+.cloud1::before { width: 81px; height: 81px; top: -33.75px; left: 20.25px; }
+.cloud1::after { width: 60.75px; height: 60.75px; top: -20.25px; right: 20.25px; }
 
-.cloud2 { width: 180px; height: 50px; top: 25%; left: -300px; animation-duration: 55s; animation-delay: -35s; opacity: 0.7; --scale: 0.8; }
-.cloud2::before { width: 80px; height: 80px; top: -40px; left: 25px; }
-.cloud2::after { width: 60px; height: 60px; top: -25px; right: 25px; }
+.cloud2 { width: 243px; height: 67.5px; top: 25%; left: -405px; animation-duration: 55s; animation-delay: -35s; opacity: 0.7; --scale: 0.8; }
+.cloud2::before { width: 108px; height: 108px; top: -54px; left: 33.75px; }
+.cloud2::after { width: 81px; height: 81px; top: -33.75px; right: 33.75px; }
 
-.cloud3 { width: 90px; height: 25px; top: 35%; left: -150px; animation-duration: 30s; animation-delay: -10s; opacity: 0.6; }
-.cloud3::before { width: 40px; height: 40px; top: -15px; left: 10px; }
-.cloud3::after { width: 30px; height: 30px; top: -10px; right: 10px; }
+.cloud3 { width: 121.5px; height: 33.75px; top: 35%; left: -202.5px; animation-duration: 30s; animation-delay: -10s; opacity: 0.6; }
+.cloud3::before { width: 54px; height: 54px; top: -20.25px; left: 13.5px; }
+.cloud3::after { width: 40.5px; height: 40.5px; top: -13.5px; right: 13.5px; }
 
-.cloud4 { width: 150px; height: 40px; top: 10%; left: -250px; animation-duration: 45s; animation-delay: -25s; opacity: 0.8; --scale: 0.9; }
-.cloud4::before { width: 70px; height: 70px; top: -35px; left: 20px; }
-.cloud4::after { width: 50px; height: 50px; top: -20px; right: 20px; }
+.cloud4 { width: 202.5px; height: 54px; top: 10%; left: -337.5px; animation-duration: 45s; animation-delay: -25s; opacity: 0.8; --scale: 0.9; }
+.cloud4::before { width: 94.5px; height: 94.5px; top: -47.25px; left: 27px; }
+.cloud4::after { width: 67.5px; height: 67.5px; top: -27px; right: 27px; }
 
-.cloud5 { width: 100px; height: 30px; top: 40%; left: -120px; animation-duration: 35s; animation-delay: -5s; opacity: 0.5; }
-.cloud5::before { width: 50px; height: 50px; top: -20px; left: 15px; }
-.cloud5::after { width: 40px; height: 40px; top: -15px; right: 15px; }
+.cloud5 { width: 135px; height: 40.5px; top: 40%; left: -162px; animation-duration: 35s; animation-delay: -5s; opacity: 0.5; }
+.cloud5::before { width: 67.5px; height: 67.5px; top: -27px; left: 20.25px; }
+.cloud5::after { width: 54px; height: 54px; top: -20.25px; right: 20.25px; }
 
 /* Birds */
 .bird {
@@ -56,11 +56,11 @@
   --scale: 1;
   animation: fly linear infinite;
   z-index: 5;
-  left: -100px;
+  left: -135px;
 }
-.bird1 { top: 20%; animation-duration: 25s; animation-delay: -12s; width: 40px; height: 20px; }
-.bird2 { top: 28%; animation-duration: 30s; animation-delay: -5s; width: 30px; height: 15px; --scale: 0.8; }
-.bird3 { top: 15%; animation-duration: 22s; animation-delay: -18s; width: 50px; height: 25px; }
+.bird1 { top: 20%; animation-duration: 25s; animation-delay: -12s; width: 54px; height: 27px; }
+.bird2 { top: 28%; animation-duration: 30s; animation-delay: -5s; width: 40.5px; height: 20.25px; --scale: 0.8; }
+.bird3 { top: 15%; animation-duration: 22s; animation-delay: -18s; width: 67.5px; height: 33.75px; }
 
 /* Scenery */
 .hillGroup {
@@ -115,17 +115,17 @@
 
 .waterBodySvg {
   position: absolute;
-  bottom: -2px; 
+  bottom: -2.7px; 
   left: -2%;
   width: 104%; 
   height: 110%;
 }
 
 .marqueeTextPath {
-  font-size: 1.5rem;
+  font-size: 2.25rem;
   font-weight: 600;
   fill: white;
-  letter-spacing: 1px;
+  letter-spacing: 1.35px;
 }
 
 .trees {
@@ -140,20 +140,20 @@
 .forestTree {
   position: absolute;
   transform-origin: bottom center;
-  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 13.5px 13.5px rgba(0,0,0,0.15));
 }
 
 .backLayer {
   z-index: 1;
   opacity: 0.6;
-  filter: blur(1px) drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+  filter: blur(1.35px) drop-shadow(0 13.5px 13.5px rgba(0,0,0,0.1));
   animation: sway 8s ease-in-out infinite alternate;
 }
 
 .midLayer {
   z-index: 2;
   opacity: 0.85;
-  filter: blur(0.5px) drop-shadow(0 10px 10px rgba(0,0,0,0.15));
+  filter: blur(0.68px) drop-shadow(0 13.5px 13.5px rgba(0,0,0,0.15));
   animation: sway 6s ease-in-out infinite alternate;
 }
 
@@ -177,34 +177,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 20.25px;
   animation: fadeUp 1s ease-out forwards;
   margin-top: -15vh;
 }
 
 .mainLogo {
-  width: 150px;
+  width: 202.5px;
   height: auto;
-  margin-bottom: -10px;
+  margin-bottom: -13.5px;
 }
 
 .title {
-  font-size: 6rem;
+  font-size: 12rem;
   font-weight: 800;
   color: var(--forest-dark);
   line-height: 1;
-  letter-spacing: -2px;
+  letter-spacing: -2.7px;
 }
 
-.subtitle {
-  font-size: 2rem;
+.subtitleSpan {
+  display: block;
+  font-size: 3.8rem;
   font-weight: 600;
   color: var(--forest-dark);
-  max-width: 650px;
+  margin-top: 10px;
 }
 
 .seeMoreBtn {
-  margin-top: 20px;
+  margin-top: 27px;
 }
 
 /* Keyframes */
@@ -215,8 +216,8 @@
 
 @keyframes fly {
   0% { transform: translateX(0) translateY(0) scale(var(--scale)); }
-  50% { transform: translateX(60vw) translateY(-20px) scale(var(--scale)); }
-  100% { transform: translateX(120vw) translateY(10px) scale(var(--scale)); }
+  50% { transform: translateX(60vw) translateY(-27px) scale(var(--scale)); }
+  100% { transform: translateX(120vw) translateY(13.5px) scale(var(--scale)); }
 }
 
 @keyframes sway {
@@ -225,6 +226,6 @@
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(40.5px); }
   to { opacity: 1; transform: translateY(0); }
 }
