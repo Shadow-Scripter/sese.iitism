@@ -1,5 +1,9 @@
 .aboutSection {
-  padding: 135px 5%;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
   background-color: var(--cloud-white);
   overflow: hidden;
   text-align: center;
@@ -50,46 +54,34 @@
 }
 
 .title {
-  font-size: 4.73rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--forest-dark);
-  margin-bottom: 67.5px;
+  margin-bottom: 20px;
   letter-spacing: -1.35px;
 }
 
 .answersContainer {
   display: flex;
   flex-direction: column;
-  gap: 40.5px;
+  gap: 20px;
   text-align: left;
 }
 
 .answerCard {
-  padding: 40.5px;
+  padding: 20px 40px;
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(13.5px);
   box-shadow: 0 13.5px 20.25px -4.05px rgba(0,0,0,0.1);
   border: 1.35px solid rgba(55, 139, 77, 0.2);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   color: #5c4033; /* earth-brown */
   line-height: 1.6;
   transition: transform 0.3s ease;
 }
 
-.shape1 {
-  border-radius: 27px 54px 27px 54px;
-}
-
-.shape2 {
-  border-radius: 54px 27px 54px 27px;
-}
-
 .answerCard:hover {
-  transform: scale(1.05) translateX(13.5px);
-}
-
-.shape2:hover {
-  transform: scale(1.05) translateX(-13.5px);
+  transform: scale(1.05);
 }
 
 .answerTitle {
@@ -100,15 +92,9 @@
 }
 
 /* Animations */
-.hiddenLeft, .slideInLeft, .hiddenRight, .slideInRight, .hiddenTop, .slideInTop {
+.fadeOut, .fadeIn {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.hiddenLeft { opacity: 0; transform: translateX(-135px); }
-.slideInLeft { opacity: 1; transform: translateX(0); }
-
-.hiddenRight { opacity: 0; transform: translateX(135px); }
-.slideInRight { opacity: 1; transform: translateX(0); }
-
-.hiddenTop { opacity: 0; transform: translateY(67.5px); }
-.slideInTop { opacity: 1; transform: translateY(0); }
+.fadeOut { opacity: 0; transform: translateX(-50px); }
+.fadeIn { opacity: 1; transform: translateX(0); }

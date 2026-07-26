@@ -12,7 +12,7 @@ function RecentEventCard({ event }) {
     <Link 
       href={`/events?scrollTo=${event.id}`}
       ref={ref} 
-      className={`${styles.recentCard} ${isVisible ? styles.slideInLeft : styles.hiddenLeft}`}
+      className={`${styles.recentCard} ${isVisible ? styles.fadeIn : styles.fadeOut}`}
       style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
     >
       <h3 className={styles.recentTitle}>{event.title}</h3>
@@ -24,14 +24,15 @@ function RecentEventCard({ event }) {
 function UpcomingEventCard({ event }) {
   const [ref, isVisible] = useScrollReveal(0.2);
   const dateObj = new Date(event.date);
-  const month = dateObj.toLocaleString('default', { month: 'short' });
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const month = monthNames[dateObj.getMonth()];
   const day = dateObj.getDate();
   
   return (
     <Link 
       href={`/events?scrollTo=${event.id}`}
       ref={ref} 
-      className={`${styles.upcomingCard} ${isVisible ? styles.slideInRight : styles.hiddenRight}`}
+      className={`${styles.upcomingCard} ${isVisible ? styles.fadeIn : styles.fadeOut}`}
       style={{ textDecoration: 'none', color: 'inherit', display: 'flex' }}
     >
       <div className={styles.dateBox}>
@@ -67,7 +68,7 @@ export default function HomeEvents() {
 
         {/* Upcoming Events Column */}
         <div className={`${styles.column} ${styles.upcomingCol}`}>
-          <h2 className={styles.heading}>On-The-Horizon Events</h2>
+          <h2 className={styles.heading}>Upcoming Events</h2>
           <div className={styles.cardList}>
             {displayUpcoming.map((event) => (
               <UpcomingEventCard key={event.id} event={event} />

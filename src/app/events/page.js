@@ -12,7 +12,6 @@ export default function EventsPage() {
   const [showSearch, setShowSearch] = useState(false);
   const [searchTitle, setSearchTitle] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
-  const [searchLocation, setSearchLocation] = useState("");
   const [searchSpeaker, setSearchSpeaker] = useState("");
   const [searchDate, setSearchDate] = useState("");
 
@@ -21,31 +20,7 @@ export default function EventsPage() {
 
   // Filter Cascade Logic
   const availableCategories = useMemo(() => [...new Set(allEvents.map(e => e.category))], [allEvents]);
-
-  const eventsAfterCategory = useMemo(() => searchCategory 
-    ? allEvents.filter(e => e.category === searchCategory)
-    : allEvents, [allEvents, searchCategory]);
-  
-  const availableLocations = useMemo(() => [...new Set(eventsAfterCategory.map(e => e.location))], [eventsAfterCategory]);
-
-  const eventsAfterLocation = useMemo(() => searchLocation 
-    ? eventsAfterCategory.filter(e => e.location === searchLocation)
-    : eventsAfterCategory, [eventsAfterCategory, searchLocation]);
-
-  const availableSpeakers = useMemo(() => [...new Set(eventsAfterLocation.map(e => e.speaker))], [eventsAfterLocation]);
-
-  // Reset child filters if parent filter change invalidates them
-  useEffect(() => {
-    if (searchLocation && !availableLocations.includes(searchLocation)) {
-      setSearchLocation("");
-    }
-  }, [availableLocations, searchLocation]);
-
-  useEffect(() => {
-    if (searchSpeaker && !availableSpeakers.includes(searchSpeaker)) {
-      setSearchSpeaker("");
-    }
-  }, [availableSpeakers, searchSpeaker]);
+  const availableSpeakers = useMemo(() => [...new Set(allEvents.map(e => e.speaker))], [allEvents]);
 
   // Handle scrollTo from URL params
   useEffect(() => {
@@ -74,37 +49,44 @@ export default function EventsPage() {
     }
   }, []);
 
-  const handleSearch = () => {
-    let filtered = allEvents;
+  useEffect(() => {
+    if (searchTitle || searchCategory || searchSpeaker || searchDate) {
+      let filtered = allEvents;
 
-    if (searchTitle) {
-      filtered = filtered.filter(e => e.title.toLowerCase().includes(searchTitle.toLowerCase()));
-    }
-    if (searchCategory) {
-      filtered = filtered.filter(e => e.category === searchCategory);
-    }
-    if (searchLocation) {
-      filtered = filtered.filter(e => e.location === searchLocation);
-    }
-    if (searchSpeaker) {
-      filtered = filtered.filter(e => e.speaker === searchSpeaker);
-    }
-    if (searchDate) {
-      const filterDate = new Date(searchDate);
-      filtered = filtered.filter(e => {
-        const evtDate = new Date(e.date);
-        return evtDate >= filterDate;
-      });
-    }
+      if (searchTitle) {
+        filtered = filtered.filter(e => e.title.toLowerCase().includes(searchTitle.toLowerCase()));
+      }
+      if (searchCategory) {
+        filtered = filtered.filter(e => e.category === searchCategory);
+      }
+      if (searchSpeaker) {
+        filtered = filtered.filter(e => e.speaker === searchSpeaker);
+      }
+      if (searchDate) {
+        const filterDate = new Date(searchDate);
+        const oneMonthBefore = new Date(filterDate);
+        oneMonthBefore.setMonth(oneMonthBefore.getMonth() - 1);
+        
+        const oneMonthAfter = new Date(filterDate);
+        oneMonthAfter.setMonth(oneMonthAfter.getMonth() + 1);
+        
+        filtered = filtered.filter(e => {
+          const evtDate = new Date(e.date);
+          return evtDate >= oneMonthBefore && evtDate <= oneMonthAfter;
+        });
+      }
 
-    setSearchResults(filtered);
-    setIsSearching(true);
-  };
+      setSearchResults(filtered);
+      setIsSearching(true);
+    } else {
+      setIsSearching(false);
+      setSearchResults([]);
+    }
+  }, [searchTitle, searchCategory, searchSpeaker, searchDate]);
 
   const clearSearch = () => {
     setSearchTitle("");
     setSearchCategory("");
-    setSearchLocation("");
     setSearchSpeaker("");
     setSearchDate("");
     setIsSearching(false);
@@ -115,17 +97,7 @@ export default function EventsPage() {
     const [ref, isVisible, hiddenPosition] = useScrollReveal(0.1);
     
     let hiddenClass = styles.hiddenRight;
-    let transitionDelay = '0s';
-
-    if (animationType === 'train') {
-      hiddenClass = styles.hiddenRight;
-      transitionDelay = `${index * 0.15}s`;
-    } else {
-      if (index % 3 === 0) hiddenClass = styles.hiddenLeft;
-      else if (index % 3 === 1) {
-        hiddenClass = hiddenPosition === "top" ? styles.hiddenTop : styles.hiddenBottom;
-      }
-    }
+    let transitionDelay = `${(index % 3) * 0.15}s`;
     
     return (
       <div 
@@ -172,11 +144,11 @@ export default function EventsPage() {
           <div className={styles.heroOverlay}></div>
         </div>
         <div className={styles.heroPanel}>
-          <img src="/nature_square.png" alt="Nature" className={styles.heroImg} />
+          <img src="/building.jpg" alt="Building" className={styles.heroImg} style={{ filter: 'brightness(0.9)' }} />
           <div className={styles.heroOverlay}></div>
         </div>
         <div className={styles.heroPanel}>
-          <img src="/environmental_tree.png" alt="Tree" className={styles.heroImg} style={{ objectPosition: 'center', backgroundColor: '#8fc76f' }} />
+          <img src="/building.jpg" alt="Building" className={styles.heroImg} style={{ objectPosition: 'center', filter: 'sepia(30%)' }} />
           <div className={styles.heroOverlay}></div>
         </div>
         <div className={styles.heroPanel}>
@@ -184,7 +156,7 @@ export default function EventsPage() {
           <div className={styles.heroOverlay}></div>
         </div>
         <div className={styles.heroPanel}>
-          <img src="/nature_square.png" alt="Nature" className={styles.heroImg} style={{ filter: 'brightness(0.8)' }} />
+          <img src="/building.jpg" alt="Building" className={styles.heroImg} style={{ filter: 'brightness(0.8)' }} />
           <div className={styles.heroOverlay}></div>
         </div>
       </div>
@@ -227,15 +199,6 @@ export default function EventsPage() {
           </select>
 
           <select 
-            value={searchLocation}
-            onChange={(e) => setSearchLocation(e.target.value)}
-            className={styles.searchSelect}
-          >
-            <option value="">All Locations</option>
-            {availableLocations.map(loc => <option key={loc} value={loc}>{loc}</option>)}
-          </select>
-
-          <select 
             value={searchSpeaker}
             onChange={(e) => setSearchSpeaker(e.target.value)}
             className={styles.searchSelect}
@@ -243,10 +206,6 @@ export default function EventsPage() {
             <option value="">All Speakers</option>
             {availableSpeakers.map(spk => <option key={spk} value={spk}>{spk}</option>)}
           </select>
-          
-          <button onClick={handleSearch} className={styles.searchButton}>
-            Search
-          </button>
 
           {isSearching && (
             <button onClick={clearSearch} className={styles.clearButton}>
@@ -284,7 +243,7 @@ export default function EventsPage() {
           <>
             <div>
               <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>On-The-Horizon <span>Events</span></h2>
+                <h2 className={styles.sectionTitle}>Upcoming <span>Events</span></h2>
                 <div className={styles.divider}>
                   <div className={styles.line}></div>
                   <div className={styles.icon}>📅</div>

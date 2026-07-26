@@ -68,17 +68,14 @@
   fill: currentColor;
 }
 
-.treeColumn {
+.contactColumn {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
-.footerTree {
-  width: 250px;
-  height: auto;
-  opacity: 0.9;
-  filter: drop-shadow(0 6.75px 13.5px rgba(0,0,0,0.3));
+.contactItem {
+  font-size: 1.8rem;
+  margin-bottom: 10.8px;
 }
 
 .bottomBar {

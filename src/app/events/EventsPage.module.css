@@ -5,7 +5,6 @@
     radial-gradient(circle at 10% 20%, rgba(134, 239, 172, 0.2), transparent 40%),
     radial-gradient(circle at 90% 60%, rgba(250, 204, 21, 0.15), transparent 40%);
   font-family: system-ui, -apple-system, sans-serif;
-  padding-bottom: 108px;
   overflow-x: hidden;
 }
 
@@ -184,8 +183,7 @@
 
 /* Main Content Area */
 .contentArea {
-  width: 65vw;
-  max-width: none;
+  width: 75vw;
   margin: 0 auto;
   padding: 54px 0;
   display: flex;
@@ -232,8 +230,9 @@
 
 /* Event Grid */
 .eventsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40.5px;
 }
 
@@ -379,6 +378,9 @@
 .revealWrapper {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   height: 100%;
+  flex: 1 1 400px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .hiddenLeft {

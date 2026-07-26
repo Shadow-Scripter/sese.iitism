@@ -2,42 +2,33 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '@/components/NavBar/NavBar';
 import Footer from '@/components/Footer/Footer';
-import CustomCursor from '@/components/CustomCursor/CustomCursor';
 import styles from './AboutPage.module.css';
 
 export default function AboutPage() {
-  const [activeTeam, setActiveTeam] = useState('Tech Team');
+  const [activeTeam, setActiveTeam] = useState('Project');
   const [activeYear, setActiveYear] = useState('2025');
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const ITEMS_PER_PAGE = 15;
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  const faqs = Array.from({ length: 7 }).map((_, i) => ({
-    question: `Frequently Asked Question ${i + 1}?`,
-    answer: `This is the detailed answer for question ${i + 1}. It provides all the necessary information requested by the user and expands gracefully using the new accordion animation.`
-  }));
+  const faqs = [
+    {
+      question: "Who can join?",
+      answer: "Any student enrolled at IIT (ISM) Dhanbad with a passion for environmental science and sustainability can join the society."
+    },
+    {
+      question: "Does the society conduct workshops?",
+      answer: "Yes, we regularly conduct technical workshops, guest lectures, and hands-on sessions related to environmental engineering and sustainability."
+    },
+    {
+      question: "What is the annual membership fees?",
+      answer: "The annual membership fee details are communicated during our recruitment drives. We strive to keep it accessible for all students."
+    }
+  ];
 
-  const teams = ['Tech Team', 'PR Team', 'Design Team', 'Doc Team', 'Social Media Team'];
-
-  // Dummy data (25 members) to demonstrate pagination
-  const members = Array.from({ length: 25 }).map((_, i) => ({
-    name: `Member ${i + 1}`,
-    dept: 'Environmental Engineering',
-    // Dynamic based on year and team
-    avatar: `https://ui-avatars.com/api/?name=${activeTeam.replace(' ', '+')}+Member+${i + 1}+${activeYear}&background=random`
-  }));
-
-  const totalPages = Math.ceil(members.length / ITEMS_PER_PAGE);
-  const paginatedMembers = members.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
-
-  // Reset page to 1 when changing filters
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [activeTeam, activeYear]);
+  const teams = ['Project', 'PR', 'Finance', 'Design', 'Media', 'Tech'];
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -64,11 +55,10 @@ export default function AboutPage() {
     elements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [activeYear, activeTeam, currentPage]);
+  }, [activeYear, activeTeam]);
 
   return (
     <>
-      <CustomCursor />
       <NavBar />
       
       <main className={styles.pageContainer}>
@@ -103,11 +93,9 @@ export default function AboutPage() {
               </div>
               <div className={`${styles.textContent} ${styles.greenText}`}>
                 <h2>What is our society?</h2>
-                <ul>
-                  <li>A vibrant student-led organization at IIT (ISM) Dhanbad.</li>
-                  <li>Dedicated to environmental awareness, sustainability, and technological innovation.</li>
-                  <li>A platform connecting students, researchers, and professionals to solve real-world problems.</li>
-                </ul>
+                <p style={{ fontSize: '1.8rem', lineHeight: '1.6' }}>
+                  The Society of Environmental Science & Engineering is a vibrant student-led organization at IIT (ISM) Dhanbad. We are deeply dedicated to spreading environmental awareness, promoting sustainable practices, and nurturing the next generation of environmental leaders and technological innovators to solve real-world challenges.
+                </p>
               </div>
             </div>
 
@@ -117,12 +105,12 @@ export default function AboutPage() {
                 {/* User requested to just use logo_nobg for all info parts for now */}
                 <img src="/logo_nobg.png" alt="Mission" className={styles.sectionImage} />
               </div>
-              <div className={`${styles.textContent} ${styles.blueText}`} style={{ textAlign: 'right' }}>
+              <div className={`${styles.textContent} ${styles.blueText}`} style={{ paddingLeft: '40px' }}>
                 <h2>What is our mission?</h2>
-                <ul style={{ direction: 'rtl' }}>
-                  <li style={{ direction: 'ltr' }}>To cultivate a community of passionate individuals dedicated to environmental solutions.</li>
-                  <li style={{ direction: 'ltr' }}>To promote education, research, and leadership in environmental engineering.</li>
-                  <li style={{ direction: 'ltr' }}>To drive positive change through hands-on projects, workshops, and industry collaborations.</li>
+                <ul>
+                  <li>To cultivate a community of passionate individuals dedicated to environmental solutions.</li>
+                  <li>To promote education, research, and leadership in environmental engineering.</li>
+                  <li>To drive positive change through hands-on projects, workshops, and industry collaborations.</li>
                 </ul>
               </div>
             </div>
@@ -146,9 +134,37 @@ export default function AboutPage() {
           {/* Executive & Divisional Members Section */}
           <div className={styles.membersSection}>
             <div className={styles.membersHeader}>
+              <h2>Faculty In-Charge</h2>
+            </div>
+            
+            <div className={styles.facultyAdvisors}>
+              <div className={styles.avatarCard}>
+                <div className={styles.avatarWrapper}>
+                  <img src={`https://ui-avatars.com/api/?name=Chief+Advisor&background=random`} alt="Chief Faculty Advisor" className={styles.avatarImg} />
+                </div>
+                <h3 className={styles.avatarName}>Advisor Name</h3>
+                <p className={styles.avatarRole}>Chief Faculty Advisor</p>
+              </div>
+              <div className={styles.avatarCard}>
+                <div className={styles.avatarWrapper}>
+                  <img src={`https://ui-avatars.com/api/?name=Faculty+Mentor&background=random`} alt="Faculty Mentor" className={styles.avatarImg} />
+                </div>
+                <h3 className={styles.avatarName}>Mentor Name</h3>
+                <p className={styles.avatarRole}>Faculty Mentor</p>
+              </div>
+              <div className={styles.avatarCard}>
+                <div className={styles.avatarWrapper}>
+                  <img src={`https://ui-avatars.com/api/?name=Faculty+Treasurer&background=random`} alt="Faculty Treasurer" className={styles.avatarImg} />
+                </div>
+                <h3 className={styles.avatarName}>Treasurer Name</h3>
+                <p className={styles.avatarRole}>Faculty Treasurer</p>
+              </div>
+            </div>
+
+            <div className={styles.membersHeader} style={{ marginTop: '50px' }}>
               <h2>Executive Members</h2>
               <div className={styles.yearTabs}>
-                {['2024', '2025', '2026'].map((year) => (
+                {['2024', '2025'].map((year) => (
                   <button 
                     key={year}
                     onClick={() => setActiveYear(year)}
@@ -162,14 +178,14 @@ export default function AboutPage() {
             
             {/* President and Vice President (Dynamic to Year) */}
             <div className={styles.executives} key={`exec-${activeYear}`}>
-              <div className={`${styles.avatarCard} reveal ${styles.revealTop}`} style={{ transitionDelay: '0.1s' }}>
+              <div className={styles.avatarCard}>
                 <div className={styles.avatarWrapper}>
                   <img src={`https://ui-avatars.com/api/?name=President+${activeYear}&background=random`} alt="President" className={styles.avatarImg} />
                 </div>
                 <h3 className={styles.avatarName}>President Name</h3>
                 <p className={styles.avatarRole}>President</p>
               </div>
-              <div className={`${styles.avatarCard} reveal ${styles.revealTop}`} style={{ transitionDelay: '0.3s' }}>
+              <div className={styles.avatarCard}>
                 <div className={styles.avatarWrapper}>
                   <img src={`https://ui-avatars.com/api/?name=VP+${activeYear}&background=random`} alt="Vice President" className={styles.avatarImg} />
                 </div>
@@ -193,14 +209,14 @@ export default function AboutPage() {
 
             {/* Divisional Head and Co-Head (Dynamic to Team AND Year) */}
             <div className={styles.heads} key={`head-${activeTeam}-${activeYear}`}>
-              <div className={`${styles.avatarCard} reveal ${styles.revealTop}`} style={{ transitionDelay: '0.1s' }}>
+              <div className={styles.avatarCard}>
                 <div className={styles.avatarWrapper}>
                   <img src={`https://ui-avatars.com/api/?name=Head+${activeTeam.replace(' ','+')}+${activeYear}&background=random`} alt="Head" className={styles.avatarImg} />
                 </div>
                 <h3 className={styles.avatarName}>Head Name</h3>
                 <p className={styles.avatarRole}>{activeTeam} Head</p>
               </div>
-              <div className={`${styles.avatarCard} reveal ${styles.revealTop}`} style={{ transitionDelay: '0.3s' }}>
+              <div className={styles.avatarCard}>
                 <div className={styles.avatarWrapper}>
                   <img src={`https://ui-avatars.com/api/?name=CoHead+${activeTeam.replace(' ','+')}+${activeYear}&background=random`} alt="Co-Head" className={styles.avatarImg} />
                 </div>
@@ -209,50 +225,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Responsive Grid Members with Pagination */}
-            <div className={styles.grid} key={`grid-${activeTeam}-${activeYear}-${currentPage}`}>
-              {paginatedMembers.map((member, idx) => (
-                <div key={idx} className={`${styles.memberItem} reveal ${styles.revealTop}`} style={{ transitionDelay: `${(idx % 5) * 0.1}s` }}>
-                  <div className={styles.avatarWrapper}>
-                    <img src={member.avatar} alt={member.name} className={styles.avatarImg} />
-                  </div>
-                  <h3 className={styles.avatarName}>{member.name}</h3>
-                  <p className={styles.avatarRole}>Member</p>
-                </div>
-              ))}
-            </div>
-            
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-              <div className={styles.paginationControls}>
-                <button 
-                  className={styles.pageButton} 
-                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                  disabled={currentPage === 1}
-                >
-                  Prev
-                </button>
-                
-                {Array.from({ length: totalPages }).map((_, idx) => (
-                  <button
-                    key={idx}
-                    className={`${styles.pageButton} ${currentPage === idx + 1 ? styles.active : ''}`}
-                    onClick={() => setCurrentPage(idx + 1)}
-                  >
-                    {idx + 1}
-                  </button>
-                ))}
-
-                <button 
-                  className={styles.pageButton} 
-                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                  disabled={currentPage === totalPages}
-                >
-                  Next
-                </button>
-              </div>
-            )}
-            
           </div>
 
           {/* FAQ Section */}

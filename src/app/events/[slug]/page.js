@@ -1,16 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getEventById } from '@/data/eventsData';
 import NavBar from '@/components/NavBar/NavBar';
 import Footer from '@/components/Footer/Footer';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import styles from './EventDetails.module.css';
+import { useAuth } from '@/context/AuthContext';
 
 export default function EventDetailsPage({ params }) {
   const resolvedParams = React.use(params);
   const event = getEventById(resolvedParams.slug);
+  const { user } = useAuth();
   const [isPurchased, setIsPurchased] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   if (!event) {
     notFound();
@@ -18,8 +21,47 @@ export default function EventDetailsPage({ params }) {
 
   const isPastEvent = new Date(event.date) < new Date();
 
-  const handleActionClick = () => {
-    setIsPurchased(true);
+  useEffect(() => {
+    if (user) {
+      fetch(`/api/purchases?email=${encodeURIComponent(user.email)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.purchases) {
+            const hasPurchased = data.purchases.some(p => p.eventId === event.id);
+            setIsPurchased(hasPurchased);
+          }
+          setIsLoading(false);
+        })
+        .catch(err => {
+          console.error(err);
+          setIsLoading(false);
+        });
+    } else {
+      setIsPurchased(false);
+      setIsLoading(false);
+    }
+  }, [user, event.id]);
+
+  const handleActionClick = async () => {
+    if (!user) {
+      alert("Please sign in from the navbar before purchasing!");
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/purchases', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: user.email, eventId: event.id })
+      });
+      const data = await res.json();
+      if (data.success || data.error === 'Already purchased') {
+        setIsPurchased(true);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong while purchasing.");
+    }
   };
 
   return (
@@ -86,8 +128,8 @@ export default function EventDetailsPage({ params }) {
                 <>
                   <div className={styles.statusText}>This event has already concluded.</div>
                   {!isPurchased ? (
-                    <button className={styles.buyBtn} onClick={handleActionClick}>
-                      Get Materials / Recordings
+                    <button className={styles.buyBtn} onClick={handleActionClick} disabled={isLoading}>
+                      {isLoading ? 'Loading...' : 'Get Materials / Recordings'}
                     </button>
                   ) : (
                     <div className={styles.materialsSection}>
@@ -101,8 +143,8 @@ export default function EventDetailsPage({ params }) {
                 <>
                   <div className={styles.statusText}>Secure your spot for this upcoming event!</div>
                   {!isPurchased ? (
-                    <button className={styles.buyBtn} onClick={handleActionClick}>
-                      Buy Tickets / Register
+                    <button className={styles.buyBtn} onClick={handleActionClick} disabled={isLoading}>
+                      {isLoading ? 'Loading...' : 'Buy Tickets / Register'}
                     </button>
                   ) : (
                     <div className={styles.materialsSection}>

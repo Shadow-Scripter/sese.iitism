@@ -224,7 +224,7 @@
   box-shadow: 0 5.4px 13.5px rgba(55, 139, 77, 0.4);
 }
 
-.executives {
+.executives, .facultyAdvisors {
   display: flex;
   justify-content: center;
   gap: 108px;
@@ -312,96 +312,12 @@
   color: #3b82f6;
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40.5px;
-}
-
-.memberItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255,255,255,0.4);
-  padding: 27px;
-  border-radius: 27px;
-  transition: transform 0.3s;
-  width: calc(20% - 32.4px);
-  min-width: 200px;
-}
-
-.memberItem:hover {
-  transform: translateY(-6.75px);
-}
-
-.memberItem .avatarWrapper {
-  width: 135px;
-  height: 135px;
-  border-color: rgba(255,255,255,0.8);
-  border-width: 4.05px;
-}
-
-.memberItem .avatarName {
-  font-size: 1.8rem;
-  text-align: center;
-}
-
-.memberItem .avatarRole {
-  font-size: 1.5rem;
-  color: var(--text-dark);
-  opacity: 0.7;
-  text-align: center;
-}
-
-/* Pagination Controls */
-.paginationControls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 13.5px;
-  margin-top: 54px;
-}
-
-.pageButton {
-  padding: 10.8px 20.25px;
-  border-radius: 20.25px;
-  border: none;
-  background: rgba(255,255,255,0.5);
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.pageButton:hover:not(:disabled) {
-  background: rgba(255,255,255,0.8);
-  transform: translateY(-2.7px);
-}
-
-.pageButton.active {
-  background: var(--leaf-green);
-  color: white;
-  box-shadow: 0 5.4px 13.5px rgba(55, 139, 77, 0.4);
-}
-
-.pageButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 @media (max-width: 1215px) {
   .infoSection { flex-direction: column; text-align: center; }
   .reverse { flex-direction: column; }
   .textContent li::before { display: none; }
   .textContent li { padding-left: 0; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .executives, .heads { gap: 40.5px; }
-}
-
-@media (max-width: 675px) {
-  .grid { grid-template-columns: 1fr; }
+  .executives, .heads, .facultyAdvisors { gap: 40.5px; flex-wrap: wrap; }
 }
 
 /* FAQ Section */
