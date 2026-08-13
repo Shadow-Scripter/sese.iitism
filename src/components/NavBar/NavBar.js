@@ -3,28 +3,19 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './NavBar.module.css';
-import { useAuth } from '@/context/AuthContext';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function NavBar() {
   const pathname = usePathname();
-  const { user, login, logout } = useAuth();
+  const { data: session } = useSession();
+  const user = session?.user;
   const [showAuthDropdown, setShowAuthDropdown] = useState(false);
-  const [mockEmail, setMockEmail] = useState('');
 
   const mainLinks = [
     { title: "Home", path: "/" },
     { title: "About Us", path: "/about" },
     { title: "Events", path: "/events" },
   ];
-
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    if (mockEmail.trim()) {
-      login(mockEmail);
-      setMockEmail('');
-      setShowAuthDropdown(false);
-    }
-  };
 
   return (
     <div className={styles.navWrapper}>
@@ -75,7 +66,7 @@ export default function NavBar() {
           onClick={() => setShowAuthDropdown(!showAuthDropdown)}
         >
           {user ? (
-            <img src={user.avatar} alt="Profile" className={styles.profileImg} />
+            <img src={user.image || `https://ui-avatars.com/api/?name=${user.name || user.email}&background=random`} alt="Profile" className={styles.profileImg} />
           ) : (
             <div className={styles.emptyProfile}>👤</div>
           )}
@@ -88,25 +79,23 @@ export default function NavBar() {
                 <div className={styles.authName}>{user.name}</div>
                 <div className={styles.authEmail}>{user.email}</div>
                 <button 
-                  onClick={() => { logout(); setShowAuthDropdown(false); }} 
+                  onClick={() => { signOut(); setShowAuthDropdown(false); }} 
                   className={styles.logoutBtn}
                 >
                   Logout
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleLoginSubmit} className={styles.authForm}>
-                <div className={styles.authTitle}>Mock Login</div>
-                <input 
-                  type="email" 
-                  placeholder="Enter email..." 
-                  value={mockEmail}
-                  onChange={(e) => setMockEmail(e.target.value)}
-                  className={styles.authInput}
-                  required
-                />
-                <button type="submit" className={styles.loginBtn}>Sign In</button>
-              </form>
+              <div className={styles.authForm}>
+                <div className={styles.authTitle}>Login Required</div>
+                <button 
+                  onClick={() => signIn('google')} 
+                  className={styles.loginBtn}
+                  style={{ background: '#4285F4' }}
+                >
+                  Sign In with Google
+                </button>
+              </div>
             )}
           </div>
         )}

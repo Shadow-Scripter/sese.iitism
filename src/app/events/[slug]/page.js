@@ -6,12 +6,13 @@ import Footer from '@/components/Footer/Footer';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import styles from './EventDetails.module.css';
-import { useAuth } from '@/context/AuthContext';
+import { useSession } from 'next-auth/react';
 
 export default function EventDetailsPage({ params }) {
   const resolvedParams = React.use(params);
   const event = getEventById(resolvedParams.slug);
-  const { user } = useAuth();
+  const { data: session } = useSession();
+  const user = session?.user;
   const [isPurchased, setIsPurchased] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,7 +45,7 @@ export default function EventDetailsPage({ params }) {
 
   const handleActionClick = async () => {
     if (!user) {
-      alert("Please sign in from the navbar before purchasing!");
+      alert("Please sign in with Google from the navbar before purchasing!");
       return;
     }
 
